@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+
+
+
+
+<h:head>
+	<title>Welcome form</title>
+
+	<h:outputStylesheet name="css/friends1.css" />
+
+</h:head>
+
+<h:body>
+
+	<div class="header">
+
+		<p id="name">CV</p>
+		<p id="cv">CURICCULUM VITAE</p>
+		<br/>
+		
+	</div>
+	
+	
+	<div class="right">
+<h:form>
+	<h4 id="name">Basic information</h4>	<br/><br/><br/><br/>
+    <h:message for="first_name" class="error"/><br/>
+    <h:inputText value="#{friends.firstName}" a:placeholder="First name" 
+      						   id="first_name" 
+      						   label="First name" 
+      						   required="true"
+      						   requiredMessage=" Enter your name here!">
+      						   </h:inputText>
+    
+     <h:inputText value="#{friends.middleName}"
+                  a:placeholder="Middle Name">
+     </h:inputText>
+			
+     <h:inputText value="#{friends.lastName}"
+                  a:placeholder="Last Name">
+     </h:inputText>
+			<br />
+			
+     <h:selectOneMenu value="#{friends.sex}">
+	   <f:selectItems value="#{friends.gender}" />
+	 </h:selectOneMenu>
+			<br />
+	
+	 <h:message for="date" class="error"/><br/>
+	 <h:inputText value="#{friends.date}"
+	              a:placeholder="Date of birth"
+	              id="date" 
+	              label="date" 
+	              validatorMessage="Enter date in format: d.m.yyyy">
+	 <f:validateRegex pattern="\d{1,2}.\d{1,2}.\d{4}" />  
+	 </h:inputText><br/>
+	 
+     <h:selectOneMenu value="#{friends.country}" >
+       <f:selectItem itemValue="Current country" itemLabel="--Current country--" />
+	   <f:selectItem itemValue="Serbia" itemLabel="Serbia" />
+	   <f:selectItem itemValue="Germany" itemLabel="Germany" />
+	   <f:selectItem itemValue="France" itemLabel="France" />
+	   <f:selectItem itemValue="Bulgaria" itemLabel="Bulgaria" />
+	   <f:selectItem itemValue="other" itemLabel="other" />
+	 </h:selectOneMenu>
+			<br />
+	<h6 id="name">Working status </h6>	<br/><br/><br/><br/>
+	<h:selectOneRadio value="#{friends.employmentStatus}" style="font-family: Verdana, sans-serif; color:white">
+	  <f:selectItem itemValue="unemploed"
+					itemLabel="unemploed - looking for new oportunities" />
+	  <f:selectItem itemValue="employed" itemLabel="employed" />
+	</h:selectOneRadio>
+			<br />
+	
+	<h4 id="name">Education</h4>	<br/><br/><br/><br/>
+	<h:inputText value="#{friends.highschool}"
+				 a:placeholder="High school">
+	</h:inputText>
+	<h:inputText value="#{friends.hscity}"
+				 a:placeholder="City of High School">
+	</h:inputText>
+	<br />
+	
+	<h:inputText value="#{friends.faculty}"
+				 a:placeholder="College">
+	</h:inputText>
+	<h:inputText value="#{friends.facity}"
+				 a:placeholder="College city">
+	</h:inputText>
+	<br /><br/>
+	<h6 id="name">Which languages do you speak? </h6>	<br/><br/><br/><br/>
+	<h:selectManyCheckbox value="#{friends.progLanguages}" style="font-family: Verdana, sans-serif; color:white">
+	  <f:selectItem  itemValue="Serbian" itemLabel="Serbian" />
+	  <f:selectItem itemValue="English" itemLabel="English" />
+	  <f:selectItem itemValue="France" itemLabel="France" />
+	  <f:selectItem itemValue="German" itemLabel="German" />
+	  <f:selectItem itemValue="Italian" itemLabel="Italian" />
+    </h:selectManyCheckbox>
+			<br />
+	
+	<h4 id="name">Contact</h4>	<br/><br/><br/><br/>
+	
+	
+	 <h:inputText value="#{friends.phone}"
+	              a:placeholder="Phone: +3816x/xxx-xxx(x)"
+	              id="phone" 
+	              label="phone" 
+	              required="true"
+	              requiredMessage=" Enter your phone here!"
+	              validatorMessage=" Enter phone number like pattern: +3816x/xxx-xxx(x)">
+	 <f:validateRegex pattern="[+3816]+\d{1}\d{1}/\d{3}-\d{3,4}" />  
+	 </h:inputText><h:message for="phone" class="error"/><br/>
+	 
+	<h:inputText value="#{friends.email}"
+				 a:placeholder="Email: maria@gmail.com"
+				 id="email"
+				 required="true"
+				 requiredMessage=" Enter your email here!"
+				 validatorMessage=" Enter phone number like pattern: maria@gmail.com">
+	<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+	</h:inputText><h:message for="email" class="error"/><br />
+	
+    <h:inputText value="#{friends.linkedin}"
+				 a:placeholder="Linkedin"
+				 id="linkedin"
+				 validator="#{friends.validateLinkedin}">
+	</h:inputText><h:message for="linkedin" styleClass="error" /><br/>
+	
+	<h:inputText value="#{friends.github}"
+				 a:placeholder="Github account"
+				 id="github"
+				 validator="#{friends.validateGithub}">
+	</h:inputText><h:message for="github" styleClass="error" />
+			<br /><br /><br />
+    
+	 
+	 
+     
+     
+	
+	
+			
+			
+			
+			
+	<h:commandButton value="Submit" action="cv" target="_blank" />
+</h:form>
+	</div>
+	<div id="footer">
+			<p>Make your CV now!</p>
+	</div>
+</h:body>
+
+
+
+
+</html>

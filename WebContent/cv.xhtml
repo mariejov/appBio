@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>CV</title>
+	<h:outputStylesheet name="css/friends1.css" />
+</h:head>
+
+<h:body>
+  <div class="header">
+    <p id="name">#{friends.firstName} #{friends.middleName} #{friends.lastName} <br/>
+   	
+    </p>
+    <p id="cv">CURICCULUM VITAE</p>
+  </div>
+  
+  <div class="right">
+  
+  <h4 id="name">Basic information</h4>	<br/><br/><br/><br/>
+   <p id="name">
+   Gender: #{friends.sex}<br />
+   	Date of birth: #{friends.date}<br/>
+   	Country: #{friends.country}<br /> 
+   </p><br/><br/><br/><br/>
+   <p id="name">
+		Your employment status is: #{friends.employmentStatus}<br />
+		
+	</p> <br/><br/>
+	
+   <h4 id="name">Education</h4>	<br/><br/><br/><br/>
+  	
+  	
+  	
+  	<p id="name" >
+  	High school: #{friends.highschool} - #{friends.hscity}<br/>
+  	College: #{friends.faculty} - #{friends.facity}<br/>
+  	</p><br/><br/><br/>
+  	<p id="name" >
+  	Languages:
+  	</p><br/>
+  	<p id="name" >
+  	
+		<ul style="font-family: Verdana, sans-serif; color:white">
+			<ui:repeat value="#{friends.progLanguages}" var="tempLanguage">
+				<li>#{tempLanguage}</li>
+			</ui:repeat>
+
+		</ul>
+  		</p><br/><br/>
+  	
+  	
+  	
+    <h4 id="name">Contact</h4>	<br/><br/><br/><br/>
+    <p id="name">
+    	Phone: #{friends.phone} <br/>
+		Email: <a href="mailto:#{friends.email}"> #{friends.email} </a><br/>
+		Linkedin: <a href="http://#{friends.linkedin}" target="_blank"> #{friends.linkedin} </a><br/>
+		Github: <a href="http://#{friends.github}" target="_blank"> #{friends.github} </a><br/>
+	</p> <br/><br/><br/><br/>
+	
+	
+</div>
+<div id="footer">
+			<p>CV</p>
+		</div>
+</h:body>
+</html>
